@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./app.js"></script>
+    <title>Powerlifting</title>
+  </head>
+  <body style="background-color: black;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <!-- Colonna vuota a sinistra -->
+        <div class="col-md-8">
+          
+
+          <form onsubmit="calculateSet(event)">
+            <h2 class="text-center" style="color: white">Calcola Set</h2>
+            <div class="form-group">
+              <label for="percentage">Percentuale</label>
+              <input
+                type="number"
+                class="form-control"
+                id="percentage"
+                aria-describedby="percentage-help"
+                placeholder="Inserisci Percentuale"
+                required
+                max="100"
+              />
+            </div>
+            <div class="form-group" id="personal-record-group">
+              <label for="personal-record">Personal Record</label>
+              <select class="form-control" id="personal-record">
+                <option selected>Seleziona Esercizio</option>
+                <option value="">Squat</option>
+                <option value="">Bench</option>
+                <option value="">Deadlift</option>
+              </select>
+            </div>
+
+            <div
+              class="form-group"
+              id="custom-weight-group"
+              style="display: none"
+            >
+              <label for="custom-weight">Peso personalizzato</label>
+              <input
+                type="number"
+                class="form-control"
+                id="custom-weight"
+                aria-describedby="custom-weight-help"
+                placeholder="Inserisci Peso Personalizzato"
+              />
+            </div>
+
+            <div class="row">
+              <div class="col-xs-8">
+                <button type="submit" class="btn btn-primary btn-block">
+                  Calcola
+                </button>
+              </div>
+              <div class="col-xs-4">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-block"
+                  onclick="changeMode()"
+                >
+                  Change Mode
+                </button>
+              </div>
+            </div>
+
+            <button
+              type="reset"
+              id="reset-button"
+              style="display: none; margin: 10px 0 0 0"
+              class="btn btn-danger btn-block mt-5"
+              onclick="resetForm()"
+            >
+              Reset
+            </button>
+
+            <h3
+            id="setCalculated"
+            style="display: none; color: white"
+            class="text-center"
+          ></h3>
+          </form>
+          
+          <form onsubmit="activatePersonalRecordsInputs(event)" name="personal-records-form">
+            <h2 class="text-center" style="color: white; margin: 60px 0 0 0">
+              Personal Records
+            </h2>
+
+            <div class="form-group">
+              <label for="squat-pr">Squat</label>
+              <input
+                type="number"
+                class="form-control"
+                id="squat-pr"
+                aria-describedby="squat-pr-help"
+                disabled
+              />
+            </div>
+  
+            <div class="form-group">
+              <label for="bench-pr">Bench</label>
+              <input
+                type="number"
+                class="form-control"
+                id="bench-pr"
+                aria-describedby="bench-pr-help"
+                disabled
+              />
+            </div>
+  
+            <div class="form-group">
+              <label for="deadlift-pr">Deadlift</label>
+              <input
+                type="number"
+                class="form-control"
+                id="deadlift-pr"
+                aria-describedby="deadlift-pr-help"
+                disabled
+              />
+            </div>
+  
+            <button class="btn btn-primary btn-block" id="changePersonalRecordButton" onclick="activatePersonalRecordsInputs(event)">Change Personal Records</button>
+            <button class="btn btn-primary btn-block" id="savePersonalRecordsButton" onclick="deactivatePersonalRecordsInputs(event)" style="display:none;">Save Personal Records</button>
+
+            
+            <h3
+            id="yourTotal"
+            style="display: block; color: white"
+            class="text-center"
+            ></h3>
+
+          </form>
+
+          
+
+          <!-- <table class="table" style="margin: 60px 0 0 0;">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Squat</th>
+                <th scope="col">Bench</th>
+                <th scope="col">Deadlift</th>
+                <th scope="col">Data</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>140</td>
+                <td>85</td>
+                <td>175</td>
+                <td>?</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>157.5</td>
+                <td>107.5</td>
+                <td>180</td>
+                <td>06/07/24</td>
+              </tr>
+            
+            </tbody>
+          </table> -->
+
+        <div class="col-md-2"></div>
+        <!-- Colonna vuota a destra -->
+      </div>
+    </div>
+  </body>
+</html>
